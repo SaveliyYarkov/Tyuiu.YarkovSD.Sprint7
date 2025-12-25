@@ -114,9 +114,9 @@ namespace Tyuiu.YarkovSD.Sprint7.Project.V12
                 startAngle += sweepAngle;
             }
 
-            // Рисуем легенду слева внизу
-            int legendX = 20; // Отступ слева
-            int legendY = chartArea.Bottom + 20; // Отступ снизу от диаграммы
+            // Рисуем легенду в правом верхнем углу
+            int legendX = chartArea.Right - 56; // Отступ от правого края
+            int legendY = chartArea.Top - 10; // Отступ сверху
 
             DrawLegend(g, manufacturerGroups.Select(m => $"{m.Manufacturer} ({m.Count})").ToList(),
                       legendX, legendY);
@@ -349,61 +349,7 @@ namespace Tyuiu.YarkovSD.Sprint7.Project.V12
             }
         }
 
-        private void ButtonRefresh_Click(object sender, EventArgs e)
-        {
-            chartPanel.Invalidate();
-            toolStripStatusLabelInfo.Text = "График обновлен";
-        }
 
-        private void ButtonSaveChart_Click(object sender, EventArgs e)
-        {
-            using (SaveFileDialog saveDialog = new SaveFileDialog())
-            {
-                saveDialog.Filter = "PNG Image|*.png|JPEG Image|*.jpg|BMP Image|*.bmp";
-                saveDialog.Title = "Сохранить график";
-                saveDialog.FileName = $"Chart_{currentChartType}_{DateTime.Now:yyyyMMdd_HHmmss}";
-
-                if (saveDialog.ShowDialog() == DialogResult.OK)
-                {
-                    try
-                    {
-                        Bitmap bmp = new Bitmap(chartPanel.Width, chartPanel.Height);
-                        chartPanel.DrawToBitmap(bmp, new Rectangle(0, 0, chartPanel.Width, chartPanel.Height));
-
-                        // Определяем формат по расширению
-                        System.Drawing.Imaging.ImageFormat format;
-                        string ext = Path.GetExtension(saveDialog.FileName).ToLower();
-
-                        switch (ext)
-                        {
-                            case ".jpg":
-                            case ".jpeg":
-                                format = System.Drawing.Imaging.ImageFormat.Jpeg;
-                                break;
-                            case ".bmp":
-                                format = System.Drawing.Imaging.ImageFormat.Bmp;
-                                break;
-                            default:
-                                format = System.Drawing.Imaging.ImageFormat.Png;
-                                break;
-                        }
-
-                        bmp.Save(saveDialog.FileName, format);
-                        toolStripStatusLabelInfo.Text = $"График сохранен: {Path.GetFileName(saveDialog.FileName)}";
-
-                        MessageBox.Show($"График успешно сохранен в файл:\n{saveDialog.FileName}",
-                            "Сохранение графика",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Ошибка при сохранении графика:\n{ex.Message}",
-                            "Ошибка",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-        }
 
         private void ButtonClose_Click(object sender, EventArgs e)
         {

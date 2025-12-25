@@ -4,13 +4,6 @@
     {
         private System.ComponentModel.IContainer components = null;
         private Panel chartPanel;
-        private Panel controlPanel;
-        private GroupBox groupBoxChartType;
-        private ComboBox comboBoxChartType;
-        private Panel buttonPanel;
-        private Button buttonSaveChart;
-        private Button buttonRefresh;
-        private Button buttonClose;
         private StatusStrip statusStripChart;
         private ToolStripStatusLabel toolStripStatusLabelInfo;
         private ToolStripStatusLabel toolStripStatusLabelData;
@@ -26,21 +19,18 @@
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChartForm));
             chartPanel = new Panel();
-            controlPanel = new Panel();
-            buttonPanel = new Panel();
-            buttonClose = new Button();
-            buttonRefresh = new Button();
-            buttonSaveChart = new Button();
-            groupBoxChartType = new GroupBox();
-            comboBoxChartType = new ComboBox();
             statusStripChart = new StatusStrip();
             toolStripStatusLabelInfo = new ToolStripStatusLabel();
             toolStripStatusLabelData = new ToolStripStatusLabel();
-            controlPanel.SuspendLayout();
-            buttonPanel.SuspendLayout();
-            groupBoxChartType.SuspendLayout();
+            groupBoxChartType = new GroupBox();
+            comboBoxChartType = new ComboBox();
+            buttonClose = new Button();
+            controlPanel = new Panel();
             statusStripChart.SuspendLayout();
+            groupBoxChartType.SuspendLayout();
+            controlPanel.SuspendLayout();
             SuspendLayout();
             // 
             // chartPanel
@@ -51,69 +41,33 @@
             chartPanel.Location = new Point(0, 0);
             chartPanel.Margin = new Padding(4, 3, 4, 3);
             chartPanel.Name = "chartPanel";
-            chartPanel.Size = new Size(684, 670);
+            chartPanel.Size = new Size(733, 669);
             chartPanel.TabIndex = 0;
             chartPanel.Paint += ChartPanel_Paint;
             // 
-            // controlPanel
+            // statusStripChart
             // 
-            controlPanel.BackColor = SystemColors.Control;
-            controlPanel.BorderStyle = BorderStyle.FixedSingle;
-            controlPanel.Controls.Add(buttonPanel);
-            controlPanel.Controls.Add(groupBoxChartType);
-            controlPanel.Dock = DockStyle.Right;
-            controlPanel.Location = new Point(684, 0);
-            controlPanel.Margin = new Padding(4, 3, 4, 3);
-            controlPanel.Name = "controlPanel";
-            controlPanel.Size = new Size(249, 670);
-            controlPanel.TabIndex = 1;
+            statusStripChart.Items.AddRange(new ToolStripItem[] { toolStripStatusLabelInfo, toolStripStatusLabelData });
+            statusStripChart.Location = new Point(0, 669);
+            statusStripChart.Name = "statusStripChart";
+            statusStripChart.Padding = new Padding(1, 0, 16, 0);
+            statusStripChart.Size = new Size(992, 22);
+            statusStripChart.TabIndex = 2;
+            statusStripChart.Text = "statusStrip1";
             // 
-            // buttonPanel
+            // toolStripStatusLabelInfo
             // 
-            buttonPanel.Controls.Add(buttonClose);
-            buttonPanel.Controls.Add(buttonRefresh);
-            buttonPanel.Controls.Add(buttonSaveChart);
-            buttonPanel.Location = new Point(4, 104);
-            buttonPanel.Margin = new Padding(4, 3, 4, 3);
-            buttonPanel.Name = "buttonPanel";
-            buttonPanel.Size = new Size(239, 173);
-            buttonPanel.TabIndex = 1;
+            toolStripStatusLabelInfo.Name = "toolStripStatusLabelInfo";
+            toolStripStatusLabelInfo.Size = new Size(866, 17);
+            toolStripStatusLabelInfo.Spring = true;
+            toolStripStatusLabelInfo.Text = "Готов к построению графиков";
+            toolStripStatusLabelInfo.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // buttonClose
+            // toolStripStatusLabelData
             // 
-            buttonClose.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonClose.Location = new Point(7, 115);
-            buttonClose.Margin = new Padding(4, 3, 4, 3);
-            buttonClose.Name = "buttonClose";
-            buttonClose.Size = new Size(228, 40);
-            buttonClose.TabIndex = 2;
-            buttonClose.Text = "Закрыть";
-            buttonClose.UseVisualStyleBackColor = true;
-            buttonClose.Click += ButtonClose_Click;
-            // 
-            // buttonRefresh
-            // 
-            buttonRefresh.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonRefresh.Location = new Point(7, 63);
-            buttonRefresh.Margin = new Padding(4, 3, 4, 3);
-            buttonRefresh.Name = "buttonRefresh";
-            buttonRefresh.Size = new Size(228, 40);
-            buttonRefresh.TabIndex = 1;
-            buttonRefresh.Text = "Обновить график";
-            buttonRefresh.UseVisualStyleBackColor = true;
-            buttonRefresh.Click += ButtonRefresh_Click;
-            // 
-            // buttonSaveChart
-            // 
-            buttonSaveChart.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonSaveChart.Location = new Point(7, 12);
-            buttonSaveChart.Margin = new Padding(4, 3, 4, 3);
-            buttonSaveChart.Name = "buttonSaveChart";
-            buttonSaveChart.Size = new Size(228, 40);
-            buttonSaveChart.TabIndex = 0;
-            buttonSaveChart.Text = "Сохранить график";
-            buttonSaveChart.UseVisualStyleBackColor = true;
-            buttonSaveChart.Click += ButtonSaveChart_Click;
+            toolStripStatusLabelData.Name = "toolStripStatusLabelData";
+            toolStripStatusLabelData.Size = new Size(109, 17);
+            toolStripStatusLabelData.Text = "Данные: 0 записей";
             // 
             // groupBoxChartType
             // 
@@ -141,35 +95,38 @@
             comboBoxChartType.TabIndex = 0;
             comboBoxChartType.SelectedIndexChanged += ComboBoxChartType_SelectedIndexChanged;
             // 
-            // statusStripChart
+            // buttonClose
             // 
-            statusStripChart.Items.AddRange(new ToolStripItem[] { toolStripStatusLabelInfo, toolStripStatusLabelData });
-            statusStripChart.Location = new Point(0, 670);
-            statusStripChart.Name = "statusStripChart";
-            statusStripChart.Padding = new Padding(1, 0, 16, 0);
-            statusStripChart.Size = new Size(933, 22);
-            statusStripChart.TabIndex = 2;
-            statusStripChart.Text = "statusStrip1";
+            buttonClose.BackColor = Color.Black;
+            buttonClose.FlatStyle = FlatStyle.Flat;
+            buttonClose.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonClose.Image = (Image)resources.GetObject("buttonClose.Image");
+            buttonClose.Location = new Point(7, 90);
+            buttonClose.Margin = new Padding(4, 3, 4, 3);
+            buttonClose.Name = "buttonClose";
+            buttonClose.Size = new Size(242, 574);
+            buttonClose.TabIndex = 2;
+            buttonClose.UseVisualStyleBackColor = false;
+            buttonClose.Click += ButtonClose_Click;
             // 
-            // toolStripStatusLabelInfo
+            // controlPanel
             // 
-            toolStripStatusLabelInfo.Name = "toolStripStatusLabelInfo";
-            toolStripStatusLabelInfo.Size = new Size(807, 17);
-            toolStripStatusLabelInfo.Spring = true;
-            toolStripStatusLabelInfo.Text = "Готов к построению графиков";
-            toolStripStatusLabelInfo.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // toolStripStatusLabelData
-            // 
-            toolStripStatusLabelData.Name = "toolStripStatusLabelData";
-            toolStripStatusLabelData.Size = new Size(109, 17);
-            toolStripStatusLabelData.Text = "Данные: 0 записей";
+            controlPanel.BackColor = Color.OldLace;
+            controlPanel.BorderStyle = BorderStyle.FixedSingle;
+            controlPanel.Controls.Add(buttonClose);
+            controlPanel.Controls.Add(groupBoxChartType);
+            controlPanel.Dock = DockStyle.Right;
+            controlPanel.Location = new Point(733, 0);
+            controlPanel.Margin = new Padding(4, 3, 4, 3);
+            controlPanel.Name = "controlPanel";
+            controlPanel.Size = new Size(259, 669);
+            controlPanel.TabIndex = 1;
             // 
             // ChartForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(933, 692);
+            ClientSize = new Size(992, 691);
             Controls.Add(chartPanel);
             Controls.Add(controlPanel);
             Controls.Add(statusStripChart);
@@ -179,14 +136,17 @@
             StartPosition = FormStartPosition.CenterParent;
             Text = "Графики и диаграммы - Каталог ПЭВМ";
             Load += ChartForm_Load;
-            controlPanel.ResumeLayout(false);
-            buttonPanel.ResumeLayout(false);
-            groupBoxChartType.ResumeLayout(false);
             statusStripChart.ResumeLayout(false);
             statusStripChart.PerformLayout();
+            groupBoxChartType.ResumeLayout(false);
+            controlPanel.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
 
         }
+        private GroupBox groupBoxChartType;
+        private ComboBox comboBoxChartType;
+        private Button buttonClose;
+        private Panel controlPanel;
     }
 }
