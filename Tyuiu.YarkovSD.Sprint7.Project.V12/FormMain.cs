@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using System.Data;
 using Tyuiu.YarkovSD.Sprint7.Project.V12.Lib;
 
 namespace Tyuiu.YarkovSD.Sprint7.Project.V12
@@ -557,13 +558,45 @@ namespace Tyuiu.YarkovSD.Sprint7.Project.V12
                 return;
             }
 
-            MessageBox.Show("Графики будут реализованы в следующей версии\n" +
-                          "Планируется:\n" +
-                          "- Распределение по производителям\n" +
-                          "- Диаграмма цен\n" +
-                          "- Зависимость цены от характеристик",
-                          "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            UpdateStatus("Графики в разработке");
+            // Создаем DataTable из списка компьютеров
+            DataTable dataTable = CreateDataTableFromComputers();
+
+            // Создаем и показываем форму с графиками
+            ChartForm chartForm = new ChartForm(dataTable);
+            chartForm.ShowDialog();
+            UpdateStatus("Графики отображены");
+        }
+
+        private DataTable CreateDataTableFromComputers()
+        {
+            DataTable dataTable = new DataTable();
+
+            // Создаем колонки
+            dataTable.Columns.Add("Model", typeof(string));
+            dataTable.Columns.Add("Manufacturer", typeof(string));
+            dataTable.Columns.Add("Processor", typeof(string));
+            dataTable.Columns.Add("ClockSpeed", typeof(double));
+            dataTable.Columns.Add("RAM", typeof(int));
+            dataTable.Columns.Add("HDD", typeof(int));
+            dataTable.Columns.Add("Price", typeof(decimal));
+            dataTable.Columns.Add("ReleaseDate", typeof(DateTime));
+
+            // Заполняем данными
+            foreach (var computer in computers)
+            {
+                dataTable.Rows.Add(
+                    computer.Model,
+                    computer.Manufacturer,
+                    computer.Processor,
+                    computer.ClockSpeed,
+                    computer.RAM,
+                    computer.HDD,
+                    computer.Price,
+                    computer.ReleaseDate
+                );
+            }
+
+            return dataTable;
         }
 
         private void buttonAboutYSD_Click(object sender, EventArgs e)
@@ -577,7 +610,8 @@ namespace Tyuiu.YarkovSD.Sprint7.Project.V12
                           "- Загрузка/сохранение данных\n" +
                           "- Добавление/редактирование/удаление\n" +
                           "- Поиск, фильтрация, сортировка\n" +
-                          "- Статистический анализ",
+                          "- Статистический анализ\n" +
+                          "- Визуализация данных (графики)",
                           "О программе", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -621,12 +655,167 @@ namespace Tyuiu.YarkovSD.Sprint7.Project.V12
             {
                 buttonEditComputerYSD_Click(sender, e);
             }
+            else if (e.KeyCode == Keys.F1)
+            {
+                buttonAboutYSD_Click(sender, e);
+            }
+            else if (e.KeyCode == Keys.F5 && buttonChartYSD.Enabled)
+            {
+                buttonChartYSD_Click(sender, e);
+            }
         }
 
         // Обработчик изменения выделения в DataGridView
         private void dataGridViewComputersYSD_SelectionChanged(object sender, EventArgs e)
         {
             UpdateButtonsState(computers.Count > 0);
+        }
+
+        // Новые методы для горячих клавиш
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.O))
+            {
+                buttonLoadDataYSD_Click(this, EventArgs.Empty);
+                return true;
+            }
+            else if (keyData == (Keys.Control | Keys.S))
+            {
+                buttonSaveDataYSD_Click(this, EventArgs.Empty);
+                return true;
+            }
+            else if (keyData == (Keys.Control | Keys.N))
+            {
+                buttonAddComputerYSD_Click(this, EventArgs.Empty);
+                return true;
+            }
+            else if (keyData == (Keys.Control | Keys.F))
+            {
+                textBoxSearchYSD.Focus();
+                return true;
+            }
+            else if (keyData == Keys.F12)
+            {
+                buttonChartYSD_Click(this, EventArgs.Empty);
+                return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        // Метод для тестирования - создание демо-данных
+        private void CreateDemoData()
+        {
+            if (computers.Count == 0)
+            {
+                computers = new List<DataServiceYSD.ComputerYSD>
+                {
+                    new DataServiceYSD.ComputerYSD
+                    {
+                        Model = "Inspiron 15 3000",
+                        Manufacturer = "Dell",
+                        Processor = "Intel Core i5",
+                        ClockSpeed = 2.5,
+                        RAM = 8,
+                        HDD = 1000,
+                        Price = 45000,
+                        ReleaseDate = new DateTime(2023, 1, 15)
+                    },
+                    new DataServiceYSD.ComputerYSD
+                    {
+                        Model = "ThinkPad E14",
+                        Manufacturer = "Lenovo",
+                        Processor = "Intel Core i7",
+                        ClockSpeed = 3.2,
+                        RAM = 16,
+                        HDD = 512,
+                        Price = 75000,
+                        ReleaseDate = new DateTime(2023, 3, 20)
+                    },
+                    new DataServiceYSD.ComputerYSD
+                    {
+                        Model = "Pavilion 15",
+                        Manufacturer = "HP",
+                        Processor = "AMD Ryzen 5",
+                        ClockSpeed = 3.0,
+                        RAM = 8,
+                        HDD = 500,
+                        Price = 40000,
+                        ReleaseDate = new DateTime(2023, 2, 10)
+                    },
+                    new DataServiceYSD.ComputerYSD
+                    {
+                        Model = "MacBook Air M2",
+                        Manufacturer = "Apple",
+                        Processor = "Apple M2",
+                        ClockSpeed = 3.5,
+                        RAM = 8,
+                        HDD = 256,
+                        Price = 120000,
+                        ReleaseDate = new DateTime(2023, 6, 1)
+                    },
+                    new DataServiceYSD.ComputerYSD
+                    {
+                        Model = "VivoBook 15",
+                        Manufacturer = "ASUS",
+                        Processor = "Intel Core i3",
+                        ClockSpeed = 2.0,
+                        RAM = 4,
+                        HDD = 1000,
+                        Price = 30000,
+                        ReleaseDate = new DateTime(2022, 11, 15)
+                    },
+                    new DataServiceYSD.ComputerYSD
+                    {
+                        Model = "Aspire 5",
+                        Manufacturer = "Acer",
+                        Processor = "Intel Core i5",
+                        ClockSpeed = 2.8,
+                        RAM = 12,
+                        HDD = 1000,
+                        Price = 50000,
+                        ReleaseDate = new DateTime(2023, 4, 5)
+                    },
+                    new DataServiceYSD.ComputerYSD
+                    {
+                        Model = "Legion 5",
+                        Manufacturer = "Lenovo",
+                        Processor = "Intel Core i9",
+                        ClockSpeed = 4.0,
+                        RAM = 32,
+                        HDD = 2000,
+                        Price = 150000,
+                        ReleaseDate = new DateTime(2023, 7, 10)
+                    },
+                    new DataServiceYSD.ComputerYSD
+                    {
+                        Model = "XPS 13",
+                        Manufacturer = "Dell",
+                        Processor = "Intel Core i7",
+                        ClockSpeed = 3.6,
+                        RAM = 16,
+                        HDD = 1000,
+                        Price = 110000,
+                        ReleaseDate = new DateTime(2023, 5, 25)
+                    }
+                };
+
+                DisplayComputers();
+                UpdateManufacturersList();
+                UpdateStatus($"Создано {computers.Count} демо-записей");
+                UpdateButtonsState(true);
+            }
+        }
+
+        // Кнопка для демо-данных (можно добавить в интерфейс)
+        private void buttonDemoDataYSD_Click(object sender, EventArgs e)
+        {
+            CreateDemoData();
+        }
+
+        private void buttonStatisticsYSD_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

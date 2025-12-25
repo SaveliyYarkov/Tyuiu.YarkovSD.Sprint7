@@ -20,6 +20,7 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMainYSD));
             dataGridViewComputersYSD = new DataGridView();
             ColumnModel = new DataGridViewTextBoxColumn();
             ColumnManufacturer = new DataGridViewTextBoxColumn();
@@ -29,12 +30,6 @@
             ColumnHDD = new DataGridViewTextBoxColumn();
             ColumnPrice = new DataGridViewTextBoxColumn();
             ColumnReleaseDate = new DataGridViewTextBoxColumn();
-            menuStripMainYSD = new MenuStrip();
-            fileToolStripMenuItem = new ToolStripMenuItem();
-            loadToolStripMenuItem = new ToolStripMenuItem();
-            saveToolStripMenuItem = new ToolStripMenuItem();
-            toolStripSeparator1 = new ToolStripSeparator();
-            exitToolStripMenuItem = new ToolStripMenuItem();
             statusStripMainYSD = new StatusStrip();
             toolStripStatusLabelInfoYSD = new ToolStripStatusLabel();
             toolStripStatusLabelCountYSD = new ToolStripStatusLabel();
@@ -56,13 +51,19 @@
             buttonStatisticsYSD = new Button();
             buttonChartYSD = new Button();
             buttonAboutYSD = new Button();
+            fileToolStripMenuItem = new ToolStripMenuItem();
+            loadToolStripMenuItem = new ToolStripMenuItem();
+            saveToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator1 = new ToolStripSeparator();
+            exitToolStripMenuItem = new ToolStripMenuItem();
+            menuStripMainYSD = new MenuStrip();
             ((System.ComponentModel.ISupportInitialize)dataGridViewComputersYSD).BeginInit();
-            menuStripMainYSD.SuspendLayout();
             statusStripMainYSD.SuspendLayout();
             panelControls.SuspendLayout();
             groupBoxSearch.SuspendLayout();
             groupBoxFilter.SuspendLayout();
             groupBoxSort.SuspendLayout();
+            menuStripMainYSD.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridViewComputersYSD
@@ -71,7 +72,7 @@
             dataGridViewComputersYSD.AllowUserToDeleteRows = false;
             dataGridViewComputersYSD.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewComputersYSD.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewComputersYSD.BackgroundColor = SystemColors.Window;
+            dataGridViewComputersYSD.BackgroundColor = Color.OldLace;
             dataGridViewComputersYSD.BorderStyle = BorderStyle.Fixed3D;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
@@ -106,7 +107,7 @@
             dataGridViewComputersYSD.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewComputersYSD.RowHeadersWidth = 25;
             dataGridViewComputersYSD.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewComputersYSD.Size = new Size(758, 669);
+            dataGridViewComputersYSD.Size = new Size(845, 579);
             dataGridViewComputersYSD.TabIndex = 0;
             // 
             // ColumnModel
@@ -173,61 +174,20 @@
             ColumnReleaseDate.Name = "ColumnReleaseDate";
             ColumnReleaseDate.ReadOnly = true;
             // 
-            // menuStripMainYSD
-            // 
-            menuStripMainYSD.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem });
-            menuStripMainYSD.Location = new Point(0, 0);
-            menuStripMainYSD.Name = "menuStripMainYSD";
-            menuStripMainYSD.Padding = new Padding(7, 2, 0, 2);
-            menuStripMainYSD.Size = new Size(1157, 24);
-            menuStripMainYSD.TabIndex = 1;
-            menuStripMainYSD.Text = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { loadToolStripMenuItem, saveToolStripMenuItem, toolStripSeparator1, exitToolStripMenuItem });
-            fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            fileToolStripMenuItem.Size = new Size(48, 20);
-            fileToolStripMenuItem.Text = "Файл";
-            // 
-            // loadToolStripMenuItem
-            // 
-            loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            loadToolStripMenuItem.Size = new Size(133, 22);
-            loadToolStripMenuItem.Text = "Загрузить";
-            // 
-            // saveToolStripMenuItem
-            // 
-            saveToolStripMenuItem.Enabled = false;
-            saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            saveToolStripMenuItem.Size = new Size(133, 22);
-            saveToolStripMenuItem.Text = "Сохранить";
-            // 
-            // toolStripSeparator1
-            // 
-            toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(130, 6);
-            // 
-            // exitToolStripMenuItem
-            // 
-            exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(133, 22);
-            exitToolStripMenuItem.Text = "Выход";
-            // 
             // statusStripMainYSD
             // 
             statusStripMainYSD.Items.AddRange(new ToolStripItem[] { toolStripStatusLabelInfoYSD, toolStripStatusLabelCountYSD });
-            statusStripMainYSD.Location = new Point(0, 719);
+            statusStripMainYSD.Location = new Point(0, 629);
             statusStripMainYSD.Name = "statusStripMainYSD";
             statusStripMainYSD.Padding = new Padding(1, 0, 16, 0);
-            statusStripMainYSD.Size = new Size(1157, 22);
+            statusStripMainYSD.Size = new Size(1244, 22);
             statusStripMainYSD.TabIndex = 2;
             statusStripMainYSD.Text = "statusStrip1";
             // 
             // toolStripStatusLabelInfoYSD
             // 
             toolStripStatusLabelInfoYSD.Name = "toolStripStatusLabelInfoYSD";
-            toolStripStatusLabelInfoYSD.Size = new Size(1044, 17);
+            toolStripStatusLabelInfoYSD.Size = new Size(1162, 17);
             toolStripStatusLabelInfoYSD.Spring = true;
             toolStripStatusLabelInfoYSD.Text = "Готов к работе";
             toolStripStatusLabelInfoYSD.TextAlign = ContentAlignment.MiddleLeft;
@@ -241,6 +201,7 @@
             // panelControls
             // 
             panelControls.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            panelControls.BackColor = Color.OldLace;
             panelControls.BorderStyle = BorderStyle.FixedSingle;
             panelControls.Controls.Add(groupBoxSearch);
             panelControls.Controls.Add(groupBoxFilter);
@@ -253,10 +214,10 @@
             panelControls.Controls.Add(buttonStatisticsYSD);
             panelControls.Controls.Add(buttonChartYSD);
             panelControls.Controls.Add(buttonAboutYSD);
-            panelControls.Location = new Point(779, 31);
+            panelControls.Location = new Point(866, 31);
             panelControls.Margin = new Padding(4, 3, 4, 3);
             panelControls.Name = "panelControls";
-            panelControls.Size = new Size(364, 669);
+            panelControls.Size = new Size(365, 579);
             panelControls.TabIndex = 3;
             // 
             // groupBoxSearch
@@ -370,6 +331,8 @@
             // 
             // buttonLoadDataYSD
             // 
+            buttonLoadDataYSD.BackColor = SystemColors.ControlLight;
+            buttonLoadDataYSD.FlatStyle = FlatStyle.Flat;
             buttonLoadDataYSD.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             buttonLoadDataYSD.Location = new Point(13, 287);
             buttonLoadDataYSD.Margin = new Padding(4, 3, 4, 3);
@@ -377,11 +340,13 @@
             buttonLoadDataYSD.Size = new Size(338, 40);
             buttonLoadDataYSD.TabIndex = 3;
             buttonLoadDataYSD.Text = "Загрузить данные";
-            buttonLoadDataYSD.UseVisualStyleBackColor = true;
+            buttonLoadDataYSD.UseVisualStyleBackColor = false;
             // 
             // buttonSaveDataYSD
             // 
+            buttonSaveDataYSD.BackColor = SystemColors.ControlLight;
             buttonSaveDataYSD.Enabled = false;
+            buttonSaveDataYSD.FlatStyle = FlatStyle.Flat;
             buttonSaveDataYSD.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             buttonSaveDataYSD.Location = new Point(13, 333);
             buttonSaveDataYSD.Margin = new Padding(4, 3, 4, 3);
@@ -389,84 +354,138 @@
             buttonSaveDataYSD.Size = new Size(338, 40);
             buttonSaveDataYSD.TabIndex = 4;
             buttonSaveDataYSD.Text = "Сохранить данные";
-            buttonSaveDataYSD.UseVisualStyleBackColor = true;
+            buttonSaveDataYSD.UseVisualStyleBackColor = false;
             // 
             // buttonAddComputerYSD
             // 
+            buttonAddComputerYSD.BackColor = Color.FromArgb(192, 255, 192);
             buttonAddComputerYSD.Enabled = false;
+            buttonAddComputerYSD.FlatStyle = FlatStyle.Flat;
             buttonAddComputerYSD.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonAddComputerYSD.Image = (Image)resources.GetObject("buttonAddComputerYSD.Image");
             buttonAddComputerYSD.Location = new Point(13, 379);
             buttonAddComputerYSD.Margin = new Padding(4, 3, 4, 3);
             buttonAddComputerYSD.Name = "buttonAddComputerYSD";
-            buttonAddComputerYSD.Size = new Size(338, 40);
+            buttonAddComputerYSD.Size = new Size(97, 114);
             buttonAddComputerYSD.TabIndex = 5;
-            buttonAddComputerYSD.Text = "Добавить компьютер";
-            buttonAddComputerYSD.UseVisualStyleBackColor = true;
+            buttonAddComputerYSD.UseVisualStyleBackColor = false;
             // 
             // buttonEditComputerYSD
             // 
+            buttonEditComputerYSD.BackColor = SystemColors.ControlLight;
             buttonEditComputerYSD.Enabled = false;
+            buttonEditComputerYSD.FlatStyle = FlatStyle.Flat;
             buttonEditComputerYSD.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonEditComputerYSD.Location = new Point(13, 425);
+            buttonEditComputerYSD.Location = new Point(118, 379);
             buttonEditComputerYSD.Margin = new Padding(4, 3, 4, 3);
             buttonEditComputerYSD.Name = "buttonEditComputerYSD";
-            buttonEditComputerYSD.Size = new Size(338, 40);
+            buttonEditComputerYSD.Size = new Size(128, 114);
             buttonEditComputerYSD.TabIndex = 6;
             buttonEditComputerYSD.Text = "Редактировать";
-            buttonEditComputerYSD.UseVisualStyleBackColor = true;
+            buttonEditComputerYSD.UseVisualStyleBackColor = false;
             // 
             // buttonDeleteComputerYSD
             // 
+            buttonDeleteComputerYSD.BackColor = Color.FromArgb(255, 192, 192);
             buttonDeleteComputerYSD.Enabled = false;
+            buttonDeleteComputerYSD.FlatStyle = FlatStyle.Flat;
             buttonDeleteComputerYSD.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonDeleteComputerYSD.Location = new Point(13, 471);
+            buttonDeleteComputerYSD.Image = (Image)resources.GetObject("buttonDeleteComputerYSD.Image");
+            buttonDeleteComputerYSD.Location = new Point(254, 379);
             buttonDeleteComputerYSD.Margin = new Padding(4, 3, 4, 3);
             buttonDeleteComputerYSD.Name = "buttonDeleteComputerYSD";
-            buttonDeleteComputerYSD.Size = new Size(338, 40);
+            buttonDeleteComputerYSD.Size = new Size(97, 114);
             buttonDeleteComputerYSD.TabIndex = 7;
-            buttonDeleteComputerYSD.Text = "Удалить";
-            buttonDeleteComputerYSD.UseVisualStyleBackColor = true;
+            buttonDeleteComputerYSD.UseVisualStyleBackColor = false;
             // 
             // buttonStatisticsYSD
             // 
+            buttonStatisticsYSD.BackColor = SystemColors.ControlLight;
             buttonStatisticsYSD.Enabled = false;
+            buttonStatisticsYSD.FlatStyle = FlatStyle.Flat;
             buttonStatisticsYSD.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonStatisticsYSD.Location = new Point(13, 517);
+            buttonStatisticsYSD.Image = (Image)resources.GetObject("buttonStatisticsYSD.Image");
+            buttonStatisticsYSD.Location = new Point(13, 499);
             buttonStatisticsYSD.Margin = new Padding(4, 3, 4, 3);
             buttonStatisticsYSD.Name = "buttonStatisticsYSD";
-            buttonStatisticsYSD.Size = new Size(338, 40);
+            buttonStatisticsYSD.Size = new Size(97, 66);
             buttonStatisticsYSD.TabIndex = 8;
-            buttonStatisticsYSD.Text = "Статистика";
-            buttonStatisticsYSD.UseVisualStyleBackColor = true;
+            buttonStatisticsYSD.UseVisualStyleBackColor = false;
+            buttonStatisticsYSD.Click += buttonStatisticsYSD_Click_1;
             // 
             // buttonChartYSD
             // 
+            buttonChartYSD.BackColor = SystemColors.ControlLight;
             buttonChartYSD.Enabled = false;
+            buttonChartYSD.FlatStyle = FlatStyle.Flat;
             buttonChartYSD.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonChartYSD.Location = new Point(13, 563);
+            buttonChartYSD.Image = (Image)resources.GetObject("buttonChartYSD.Image");
+            buttonChartYSD.Location = new Point(118, 499);
             buttonChartYSD.Margin = new Padding(4, 3, 4, 3);
             buttonChartYSD.Name = "buttonChartYSD";
-            buttonChartYSD.Size = new Size(338, 40);
+            buttonChartYSD.Size = new Size(128, 66);
             buttonChartYSD.TabIndex = 9;
-            buttonChartYSD.Text = "Графики";
-            buttonChartYSD.UseVisualStyleBackColor = true;
+            buttonChartYSD.UseVisualStyleBackColor = false;
             // 
             // buttonAboutYSD
             // 
+            buttonAboutYSD.BackColor = SystemColors.ControlLight;
+            buttonAboutYSD.FlatStyle = FlatStyle.Flat;
             buttonAboutYSD.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonAboutYSD.Location = new Point(13, 609);
+            buttonAboutYSD.Image = (Image)resources.GetObject("buttonAboutYSD.Image");
+            buttonAboutYSD.Location = new Point(254, 499);
             buttonAboutYSD.Margin = new Padding(4, 3, 4, 3);
             buttonAboutYSD.Name = "buttonAboutYSD";
-            buttonAboutYSD.Size = new Size(338, 40);
+            buttonAboutYSD.Size = new Size(97, 66);
             buttonAboutYSD.TabIndex = 10;
-            buttonAboutYSD.Text = "О программе";
-            buttonAboutYSD.UseVisualStyleBackColor = true;
+            buttonAboutYSD.UseVisualStyleBackColor = false;
+            // 
+            // fileToolStripMenuItem
+            // 
+            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { loadToolStripMenuItem, saveToolStripMenuItem, toolStripSeparator1, exitToolStripMenuItem });
+            fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            fileToolStripMenuItem.Size = new Size(48, 20);
+            fileToolStripMenuItem.Text = "Файл";
+            // 
+            // loadToolStripMenuItem
+            // 
+            loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+            loadToolStripMenuItem.Size = new Size(133, 22);
+            loadToolStripMenuItem.Text = "Загрузить";
+            // 
+            // saveToolStripMenuItem
+            // 
+            saveToolStripMenuItem.Enabled = false;
+            saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            saveToolStripMenuItem.Size = new Size(133, 22);
+            saveToolStripMenuItem.Text = "Сохранить";
+            // 
+            // toolStripSeparator1
+            // 
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new Size(130, 6);
+            // 
+            // exitToolStripMenuItem
+            // 
+            exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            exitToolStripMenuItem.Size = new Size(133, 22);
+            exitToolStripMenuItem.Text = "Выход";
+            // 
+            // menuStripMainYSD
+            // 
+            menuStripMainYSD.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem });
+            menuStripMainYSD.Location = new Point(0, 0);
+            menuStripMainYSD.Name = "menuStripMainYSD";
+            menuStripMainYSD.Padding = new Padding(7, 2, 0, 2);
+            menuStripMainYSD.Size = new Size(1244, 24);
+            menuStripMainYSD.TabIndex = 1;
+            menuStripMainYSD.Text = "menuStrip1";
             // 
             // FormMainYSD
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1157, 741);
+            ClientSize = new Size(1244, 651);
             Controls.Add(panelControls);
             Controls.Add(statusStripMainYSD);
             Controls.Add(dataGridViewComputersYSD);
@@ -478,8 +497,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Каталог персональных ЭВМ - YarkovSD Sprint7 Project V12";
             ((System.ComponentModel.ISupportInitialize)dataGridViewComputersYSD).EndInit();
-            menuStripMainYSD.ResumeLayout(false);
-            menuStripMainYSD.PerformLayout();
             statusStripMainYSD.ResumeLayout(false);
             statusStripMainYSD.PerformLayout();
             panelControls.ResumeLayout(false);
@@ -487,6 +504,8 @@
             groupBoxSearch.PerformLayout();
             groupBoxFilter.ResumeLayout(false);
             groupBoxSort.ResumeLayout(false);
+            menuStripMainYSD.ResumeLayout(false);
+            menuStripMainYSD.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
 
@@ -495,12 +514,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridViewComputersYSD;
-        private System.Windows.Forms.MenuStrip menuStripMainYSD;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStripMainYSD;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelInfoYSD;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelCountYSD;
@@ -530,5 +543,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnHDD;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnReleaseDate;
+        private ToolStripMenuItem fileToolStripMenuItem;
+        private ToolStripMenuItem loadToolStripMenuItem;
+        private ToolStripMenuItem saveToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripMenuItem exitToolStripMenuItem;
+        private MenuStrip menuStripMainYSD;
     }
 }
