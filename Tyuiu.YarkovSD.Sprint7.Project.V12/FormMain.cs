@@ -601,18 +601,12 @@ namespace Tyuiu.YarkovSD.Sprint7.Project.V12
 
         private void buttonAboutYSD_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Каталог персональных ЭВМ v1.0\n\n" +
-                          "Разработчик: Ярков С.Д.\n" +
-                          "Sprint 7 Project V12\n\n" +
-                          "Программа для учета и анализа\n" +
-                          "персональных компьютеров\n\n" +
-                          "Функции:\n" +
-                          "- Загрузка/сохранение данных\n" +
-                          "- Добавление/редактирование/удаление\n" +
-                          "- Поиск, фильтрация, сортировка\n" +
-                          "- Статистический анализ\n" +
-                          "- Визуализация данных (графики)",
-                          "О программе", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            using (AboutForm aboutForm = new AboutForm())
+            {
+                aboutForm.Owner = this;
+                aboutForm.ShowDialog();
+            }
+            UpdateStatus("Открыта информация о программе");
         }
 
         // Обработчики для текстового поля поиска
@@ -697,6 +691,11 @@ namespace Tyuiu.YarkovSD.Sprint7.Project.V12
             else if (keyData == Keys.F12)
             {
                 buttonChartYSD_Click(this, EventArgs.Empty);
+                return true;
+            }
+            else if (keyData == Keys.F1)
+            {
+                buttonAboutYSD_Click(this, EventArgs.Empty);
                 return true;
             }
 
@@ -811,11 +810,6 @@ namespace Tyuiu.YarkovSD.Sprint7.Project.V12
         private void buttonDemoDataYSD_Click(object sender, EventArgs e)
         {
             CreateDemoData();
-        }
-
-        private void buttonStatisticsYSD_Click_1(object sender, EventArgs e)
-        {
-
         }
     }
 }

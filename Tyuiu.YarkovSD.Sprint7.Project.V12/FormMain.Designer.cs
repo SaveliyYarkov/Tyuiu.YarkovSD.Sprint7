@@ -411,7 +411,6 @@
             buttonStatisticsYSD.Size = new Size(97, 66);
             buttonStatisticsYSD.TabIndex = 8;
             buttonStatisticsYSD.UseVisualStyleBackColor = false;
-            buttonStatisticsYSD.Click += buttonStatisticsYSD_Click_1;
             // 
             // buttonChartYSD
             // 
